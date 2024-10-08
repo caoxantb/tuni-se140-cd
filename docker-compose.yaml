@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  service1:
+    image: flask-service:latest
+    build:
+      dockerfile: Dockerfile
+      context: ./service1
+    ports:
+      - "8199:8199"
+    depends_on:
+      - service2
+    networks:
+      - service-network
+
+  service2:
+    image: node-service:latest
+    build:
+      dockerfile: Dockerfile
+      context: ./service2
+    expose:
+      - "8080"
+    networks:
+      - service-network
+
+networks:
+  service-network:
+    driver: bridge

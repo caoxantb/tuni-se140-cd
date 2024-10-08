@@ -1,0 +1,14 @@
+1. Used LLM tools
+I used Codeium, a VSCode extension designed to assist with code completion and commenting. (https://codeium.com/)
+
+2. Motivation/reason to use LLMs
+I chose to use Codeium to streamline my workflow and improve code documentation. Writing comments can be time-consuming and often tedious, so I wanted a tool that could quickly generate meaningful comments based on my code context.
+
+3. How and why LLM help?
+Codeium greatly sped up how I added comments to my code. It looked at the code context and offered suggestions that explained what different parts of the code did, which did save me time and made sure the comments were clear and matched the code’s purpose. Moreover, it also guaranteed that comments follow the right convention for a particular language (in this case, Python and JavaScript), so that I did not have to look up for one, and I could actually learn from it to apply the comment style for my other projects.
+
+4. What kind of mistakes LLM did
+Despite its usefulness, Codeium did make some mistakes. Occasionally, it suggested comments that were either too generic or did not quite capture the specific intent behind the code. I always had to review the generated comments to ensure they accurately reflected what the code was doing.
+
+5. What were things that LLM was not able to provide
+There were also limitations to what Codeium could do. It struggled to comprehend complex logic and code structures, which resulted in oversimplified or inaccurate comments. One of the example is at the parse values function, since the logic is quite complicated with unusual return value types, and with the use of regex also, Codeium understood the code wrongly twice.

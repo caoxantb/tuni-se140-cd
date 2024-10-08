@@ -1,0 +1,14 @@
+cmd: docker container ls
+
+CONTAINER ID   IMAGE                  COMMAND                  CREATED       STATUS       PORTS                    NAMES
+e5cf2792089e   flask-service:latest   "python __init__.py"     7 hours ago   Up 7 hours   0.0.0.0:8199->8199/tcp   exercise1-service1-1
+467cde70c3da   node-service:latest    "docker-entrypoint.s…"   7 hours ago   Up 7 hours   8080/tcp                 exercise1-service2-1
+
+cmd: docker network ls
+
+NETWORK ID     NAME                        DRIVER    SCOPE
+5a740f487d3b   bridge                      bridge    local
+2122a37ac763   exercise1_service-network   bridge    local
+6d372711c6d0   host                        host      local
+1674f9b45ff3   none                        null      local
+7121758caafd   vingroup_backend            bridge    local

@@ -1,0 +1,18 @@
+Based on the result of these exercise, although the containers have isolated environments, I can see that they still share some aspects with the host system:
+
+  1. Kernel: 
+  In the exercise, both services (Flask and Node.js) can retrieve and list running processes using the "ps -ax" command. The fact that we can view the system’s processes inside the container means the container can interact with the kernel’s process management. This shows that unlike traditional virtual machines, which operate with their own separate kernels, containers rely on the host's kernel to function; therefore, when run the aforementioned command, not only can we see the processes associated with a particular container but also the processes that belong to the host.
+
+  2. System-Level Information: 
+  In the exercise, both services can retrieve the time since last boot with the "uptime" command. Moreover, when I tried to run "docker stats", the result is:
+
+  CONTAINER ID   NAME                   CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O        PIDS
+  e449d2fc2a6e   exercise1-service1-1   0.03%     34.83MiB / 7.663GiB   0.44%     5.34kB / 3kB      27.9MB / 152kB   1
+  03cc700d6bcf   exercise1-service2-1   0.00%     44.09MiB / 7.663GiB   0.56%     2.68kB / 1.18kB   50.1MB / 4.1kB   19,
+
+  which indicates that containers can access host's system-level information such as system uptime, load average, and hardware resources (CPU, memory usage)
+
+  3. Network Interface: 
+  By default (bridge network), containers have their own network namespace, meaning they have unique IP addresses and isolated network stacks. This is proven when we try to access the IP address of each container with "hostname -I". However, they can share the host's network in two main ways:
+    - Port Mapping: Containers can expose specific ports on the host, allowing external access to container services while maintaining internal network isolation. When we expose the port 8199 on service 1 (Flask), which can access the exposed port 8080 on service 2 (Node.js), we can curl the data information through localhost:8199.
+    - Networking Namespace: Based on this reference that I found: https://docs.docker.com/engine/network/drivers/host/, where the network is "host", containers use the same network interfaces and IP address as the host, removing network isolation.
