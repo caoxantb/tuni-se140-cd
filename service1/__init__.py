@@ -1,12 +1,15 @@
 import subprocess
 import requests
 import flask
+import time
+import os
+import signal
 
 from helpers import parse_data
 
 app = flask.Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/service1', methods=['GET'])
 def get_service1_data():
   """
   Handles GET requests to the root route and returns system data from Service 1,
@@ -35,9 +38,21 @@ def get_service1_data():
   except requests.exceptions.RequestException as e:
     service2_data = {"error": str(e)}
   
-  return flask.jsonify({
+  response = flask.jsonify({
     "Service 1": service1_data,
     "Service 2": service2_data
+  })
+
+  time.sleep(2)
+
+  return response
+
+@app.route('/stop', methods=['POST'])
+def stop_services():
+  os.kill(os.getpid(), signal.SIGKILL)
+
+  return flask.jsonify({
+    "status": "Shutting down all services"
   })
 
 if __name__ == '__main__':

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Interface</title>
+    <style>
+      /* Basic styling for buttons and text area */
+      button {
+        padding: 10px;
+        margin: 5px;
+      }
+      textarea {
+        width: 100%;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Service Interface</h1>
+    <button id="requestBtn">REQUEST</button>
+    <button id="stopBtn">STOP</button>
+    <textarea
+      id="responseArea"
+      placeholder="Response will appear here..."
+    ></textarea>
+
+    <script>
+      document
+        .getElementById("requestBtn")
+        .addEventListener("click", async () => {
+          try {
+            const response = await fetch("/service1");
+            const data = await response.json();
+            document.getElementById("responseArea").value = JSON.stringify(
+              data,
+              null,
+              2
+            );
+          } catch (error) {
+            document.getElementById("responseArea").value =
+              "Error fetching data";
+          }
+        });
+
+      document.getElementById("stopBtn").addEventListener("click", async () => {
+        try {
+          const response = await fetch("/stop", {
+            method: "POST",
+          });
+        } catch (error) {
+          alert("Error stopping services: " + error);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 1. Used LLM tools
-I used Codeium, a VSCode extension designed to assist with code completion and commenting. (https://codeium.com/)
+I used Codeium, a VSCode extension designed to assist with code completion and commenting. (https://codeium.com/).
 
 2. Motivation/reason to use LLMs
 I chose to use Codeium to streamline my workflow and improve code documentation. Writing comments can be time-consuming and often tedious, so I wanted a tool that could quickly generate meaningful comments based on my code context.
@@ -12,3 +12,19 @@ Despite its usefulness, Codeium did make some mistakes. Occasionally, it suggest
 
 5. What were things that LLM was not able to provide
 There were also limitations to what Codeium could do. It struggled to comprehend complex logic and code structures, which resulted in oversimplified or inaccurate comments. One of the example is at the parse values function, since the logic is quite complicated with unusual return value types, and with the use of regex also, Codeium understood the code wrongly twice.
+
+7/11/24: Updated for Exercise 4
+1. Used LLM tools
+I used ChatGPT to generate styling for the HTML file.
+
+2. Motivation/reason to use LLMs
+I used ChatGPT to help reducing my workload for tedious styling of the HTML file.
+
+3. How and why LLM help?
+Styling is an optional part of this exercise, but since I want to do it nicely, using LLM for this piece of code reduced my time for having to look up for the CSS code, since it was hard to memorize all syntaxes.
+
+4. What kind of mistakes LLM did
+The styling is optional, so the requirements from my end are not many, therefore it only returns simple CSS code without mistakes.
+
+5. What were things that LLM was not able to provide
+Complex stylings would not be available just by using ChatGPT.
